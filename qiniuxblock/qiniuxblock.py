@@ -60,6 +60,8 @@ class QiniuXBlock(XBlock):
         }
         html = self.render_template('static/html/qiniuxblock_edit.html')
         frag = Fragment(html)
+        frag.add_css(self.load_resource("static/css/uploadifive.css"))
+        frag.add_javascript(self.load_resource("static/js/src/jquery.uploadifive.js"))
         frag.add_javascript(self.load_resource("static/js/src/qiniuxblock_edit.js"))
         frag.initialize_js('QiniuXBlockInitEdit')
         return frag
