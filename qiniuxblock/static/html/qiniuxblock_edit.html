@@ -1,3 +1,4 @@
+
 <div class="wrapper-comp-settings editor-with-buttons is-active" id="settings-tab">
 	<ul class="list-input settings-list">
 		<li class ="field comp-setting-entry is-set">
@@ -20,8 +21,14 @@
                 <label class="label setting-label" for="qiniu_edit_video_name">video_name</label>
                     <input class="input setting-input" id="file_upload" value="{{video_name}}"
                     type="file" style="width:600px">
-                    <a href="#" class="button action-upload">Upload</a>
+                    <a href="#" class="button action-upload" id="upBtnId">Upload</a>
             </div>
+            <div class="wrapper-comp-setting">
+                <select>
+                    <option >---please select a item----</option>
+                    <option value="polyv">polvy</option>
+                    <option value="qqcloud">腾讯云</option>
+                </select>
             <span class="tip setting-help">This is your video_name</span>
         </li>
          <li class="field comp-setting-entry is-set">
@@ -43,3 +50,4 @@
     	<a href="#" class="button action-primary action-save">Save</a>
     	<a href ="#" class="button  action-cancel">Cancel</a>
 </div>
+
