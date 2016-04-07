@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>qcupload</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="../static/lib/uploadify/jquery.uploadifive.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="../static/lib/uploadify/uploadifive.css">
+</head>
+<body>
+	<script type="text/javascript">
+        $(function(){
+           //var $fileUpload = $('#file_upload');
+        $('#file_upload').uploadifive({
+        'auto':false,
+        //'uploadScript':'static/lib/uploadify/uploadify.php',
+        'formData':{
+        'fcharset':'ISO-8859-1',
+        'writetoken':'6fb7b901-103c-4d58-b8a8-d5af9bc9bf4f',
+        'cataid':'1',
+        'JSONRPC':'{"title": "这里是标题", "tag": "标签", "desc": "视频文档描述"}',
+        },
+        'buttonText':'选择上传文件',
+        'fileSizeLimit':'3000MB',
+        //'fileType':'视频文件',
+        'fileType' : 'video/*',//文件类型过滤
+
+        'uploadScript' : 'http://v.polyv.net/uc/services/rest?method=uploadfile',
+        'multi':true,
+        //'successTimeout':1800,
+        'queueSizeLimit':100,
+
+        'onUploadComplete':function(file,data,response){
+           var jsonobj = eval('('+data+')');
+            alert(jsonobj.data[0].vid + " - " + jsonobj.data[0].playerwidth + " - " + jsonobj.data[0].duration);
+            $("#qiniu_edit_domain_url").val(jsonobj.data[0].vid);
+        }，
+       });
+           });
+    </script>
+
+    <input type="file" value="Filedata" id="file_upload">
+    <input type="button" onclick="javascript:$('#file_upload').uploadifive('upload')" value="submit">
+</body>
+</html>
